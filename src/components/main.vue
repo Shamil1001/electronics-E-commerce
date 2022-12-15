@@ -6,11 +6,18 @@
         <p data-bs-toggle="modal" data-bs-target="#exampleModal">
           Kategoriyalar
         </p>
+        <router-link to="/sargyt">
+          <p>Sargyt etmek</p>
+        </router-link>
         <p>Biz barada</p>
         <p>Kepillik</p>
         <p>Eltip bermek</p>
-        <p>Tehniki hyzmat</p>
+        <router-link to="/technicalServe">
+          <p>Tehniki hyzmat</p>
+        </router-link>
       </div>
+      <font-awesome-icon icon="phone" size="2x"> </font-awesome-icon>
+      <!-- <font-awesome-icons :icon="['fa-solid', 'fa-phone']" /> -->
       <p>Tel: +99365586747/+99361393852</p>
     </div>
     <div class="cat-ads">
@@ -46,7 +53,7 @@
             <p
               v-for="i in kats"
               @click="() => selectCat(i)"
-              :class="i.isActive === false ? i.name : 'active'"
+              :class="i.isSelected === false ? '' + i.name : 'active'"
               v-bind:key="i"
             >
               {{ i.name }}
@@ -123,16 +130,16 @@ export default {
   name: "Main",
   methods: {
     selectCat(cat) {
-      cat.isActive = !cat.isActive;
-
-      if (cat.isActive) {
-        this.selectedCats.push(cat.name);
-      }
-      console.log(this.selectedCats);
-      console.log(this.selectedCats.includes(cat.name));
+      cat.isSelected = !cat.isSelected;
+      // console.log(this.);
     },
     onSelect() {
-      console.log(this.kats);
+      var j = this.kats.filter((item) => {
+        return item.isSelected === true;
+      });
+      this.selectedCats = [...j];
+      console.log(this.selectedCats);
+      // console.log(this.kats);
     },
   },
   data: function () {
@@ -179,7 +186,8 @@ export default {
 }
 
 .modal-body .active {
-  background-color: rgb(19, 183, 19);
+  background-color: rgb(16, 31, 97);
+  color: white;
 }
 
 .phone-number {

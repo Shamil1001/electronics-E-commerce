@@ -1,6 +1,7 @@
 <template>
   <div class="App">
     <Header />
+    <router-view />
     <!-- <font-awesome-icon :icon="['fas', 'phone']" /> -->
     <!-- <div class="dropdown">
       <button
@@ -18,19 +19,19 @@
         <li><a class="dropdown-item" href="#">Something else here</a></li>
       </ul>
     </div> -->
-    <Main />
+    <!-- <Main /> -->
     <Footer />
   </div>
 </template>
 
 <script>
 import Header from "./components/header.vue";
-import Main from "./components/main.vue";
+// import Main from "./components/main.vue";
 import Footer from "./components/footer.vue";
 export default {
   components: {
     Header,
-    Main,
+    // Main,
     Footer,
   },
 };

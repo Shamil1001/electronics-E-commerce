@@ -7,7 +7,7 @@ const Kategoriyalar = {
     { name: "Driwerler", isSelected: false },
     { name: "Motorlar", isSelected: false },
     { name: "Tok cesmesi", isSelected: false },
-    { name: "Payatniklar", isSelected: false },
+    { name: "Payalniklar", isSelected: false },
     { name: "Robotics", isSelected: false },
     { name: "Basgalar", isSelected: false },
   ],
