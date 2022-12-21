@@ -3,7 +3,7 @@ import Cart from "../components/cart.vue";
 import Main from "../components/main.vue";
 import SargytEtmek from "../components/sargytEtmek.vue";
 import TechnicalServe from "../components/technicalServe.vue";
-
+import OneProduct from "../components/oneProduct.vue";
 const routes = [
   {
     path: "/",
@@ -14,6 +14,11 @@ const routes = [
     path: "/sargyt",
     name: "sargytEtmek",
     component: SargytEtmek,
+  },
+  {
+    path: "/oneProduct/:id",
+    name: "OneProduct",
+    component: OneProduct,
   },
   {
     path: "/technicalServe",

@@ -16,14 +16,32 @@
           <p>Tehniki hyzmat</p>
         </router-link>
       </div>
-      <font-awesome-icon icon="phone" size="2x"> </font-awesome-icon>
+
       <!-- <font-awesome-icons :icon="['fa-solid', 'fa-phone']" /> -->
-      <p>Tel: +99365586747/+99361393852</p>
+      <p>
+        <font-awesome-icon icon="phone" size="1x"> </font-awesome-icon>
+        +99365586747/+99361393852
+      </p>
     </div>
     <div class="cat-ads">
       <!-- <Categories /> -->
       <div class="ads">
         <img class="ad-image" src="../images/49635401403_96f9c322dc_o.jpg" />
+        <div class="carousel">
+          <div class="carousel-inner">
+            <div
+              class="carousel item"
+              v-for="slide in slides"
+              v-bind:key="slide"
+            >
+              <!-- <h3>{{ slide }}</h3> -->
+              <!-- <img
+                class="ad-image"
+                src="../images/49635401403_96f9c322dc_o.jpg"
+              /> -->
+            </div>
+          </div>
+        </div>
       </div>
 
       <Products />
@@ -58,48 +76,6 @@
             >
               {{ i.name }}
             </p>
-            <!-- <p
-              id="1"
-              @click="() => selectCat('arduino')"
-              :class="this.isActive === id ? 'arduino' : 'arduino active'"
-            >
-              Arduinolar
-            </p>
-            <p
-              id="2"
-              @click="() => selectCat('sensor', event)"
-              :class="this.isActive === id ? 'sensor' : 'sensor active'"
-            >
-              Sensorlar
-            </p>
-            <p
-              id="3"
-              @click="() => selectCat('kondensator')"
-              class="kondensator"
-            >
-              Kondensatorlar
-            </p>
-            <p id="4" @click="() => selectCat('payatnik')" class="led">
-              LED cyralar
-            </p>
-            <p id="5" @click="() => selectCat('driver')" class="driver">
-              Driwerler
-            </p>
-            <p id="6" @click="() => selectCat('motor')" class="motor">
-              Motorlar
-            </p>
-            <p id="7" @click="() => selectCat('payatnik')" class="payatnik">
-              Payatniklar
-            </p>
-            <p id="8" @click="() => selectCat('powerSuply')" class="powerSuply">
-              Tok cesmesi
-            </p>
-            <p id="9" @click="() => selectCat('robotics')" class="robotics">
-              Robot enjamlary
-            </p>
-            <p id="10" @click="() => selectCat('others')" class="others">
-              Beylekiler
-            </p> -->
           </div>
           <div class="modal-footer">
             <button
@@ -149,6 +125,12 @@ export default {
       isActive: false,
       selectedCats: [],
       kats: [],
+      slides: [
+        "../images/49635401403_96f9c322dc_o.jpg",
+        // "../images/49635401403_96f9c322dc_o.jpg",
+        // "../images/49635401403_96f9c322dc_o.jpg",
+        // "../images/49635401403_96f9c322dc_o.jpg",
+      ],
     };
   },
   components: {
@@ -183,6 +165,15 @@ export default {
   border-radius: 5px;
   cursor: pointer;
   width: 30%;
+}
+
+.menu a {
+  text-decoration: none;
+  color: black;
+}
+
+.menu a:hover {
+  color: #161938;
 }
 
 .modal-body .active {

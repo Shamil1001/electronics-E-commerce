@@ -13,8 +13,12 @@
       </div>
     </div>
     <div class="product-exp">
-      <div class="product-cards">
-        <div class="card border-gray mb-5 kart" v-for="n in 6" :key="n">
+      <div class="product-cards" v-if="products.data">
+        <div
+          class="card border-gray mb-5 kart"
+          v-for="n in products.data.data"
+          :key="n"
+        >
           <div class="card-header">
             <div class="compare">
               <input
@@ -28,7 +32,6 @@
             </div>
 
             <div class="header-icons">
-              <!-- <font-awesome-icon icon="phone" size="2x"> </font-awesome-icon> -->
               <font-awesome-icon
                 class="zoom-icon"
                 data-bs-toggle="modal"
@@ -41,11 +44,19 @@
           </div>
           <div class="card-body text-dark">
             <!-- <i class="fas fa-home fa-lg"></i> -->
-            <img
-              class="product-img"
-              src="https://sumbar-computer.com/storage/xs/ip/SUBKD4ES9JOzwHt4kGIR.jpg"
-            />
-            <h4 class="card-title">Block for PC</h4>
+            <router-link
+              :to="{
+                name: 'OneProduct',
+                params: { id: n.id, d: 'Shamil' },
+              }"
+            >
+              <img
+                :id="n.id"
+                class="product-img"
+                :src="n.productImage[0].imgUrl"
+              />
+            </router-link>
+            <h4 class="card-title">{{ products.data.data[0].sku }}</h4>
             <h5 class="card-text">Bahasy</h5>
             <h5 class="card-text text-danger">10000 man</h5>
             <button class="btn btn-danger">Sebede gos</button>
@@ -53,6 +64,7 @@
         </div>
       </div>
     </div>
+
     <div
       class="modal fade"
       id="zoomModal"
@@ -98,8 +110,20 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Products",
+  data() {
+    return {
+      products: {},
+    };
+  },
+  mounted() {
+    axios.get("http://192.168.31.88:5000/products/").then((resp) => {
+      this.products = { ...resp };
+      console.log(this.products.data.data);
+    });
+  },
 };
 </script>
 
