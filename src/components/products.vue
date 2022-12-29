@@ -119,7 +119,7 @@ export default {
     };
   },
   mounted() {
-    axios.get("http://192.168.31.88:5000/products/").then((resp) => {
+    axios.get("http://192.168.1.18:5000/products/").then((resp) => {
       this.products = { ...resp };
       console.log(this.products.data.data);
     });

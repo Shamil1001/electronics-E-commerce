@@ -4,12 +4,21 @@ import Main from "../components/main.vue";
 import SargytEtmek from "../components/sargytEtmek.vue";
 import TechnicalServe from "../components/technicalServe.vue";
 import OneProduct from "../components/oneProduct.vue";
+import NewCustomer from "@/components/adminPanel/newCustomer.vue";
+import AddProduct from "../components/adminPanel/addProduct.vue";
+// import Admin from "@/components/adminPanel/admin.vue";
+
 const routes = [
   {
     path: "/",
     name: "main",
     component: Main,
   },
+  // {
+  //   path: "/admin",
+  //   name: "Admin",
+  //   component: Admin,
+  // },
   {
     path: "/sargyt",
     name: "sargytEtmek",
@@ -29,6 +38,20 @@ const routes = [
     path: "/cart",
     name: "Cart",
     component: Cart,
+  },
+  {
+    path: "/newCustomer",
+    name: "NewCustomer",
+    components: {
+      a: NewCustomer,
+    },
+  },
+  {
+    path: "/newProduct",
+    name: "AddProduct",
+    components: {
+      b: AddProduct,
+    },
   },
   {
     path: "/about",

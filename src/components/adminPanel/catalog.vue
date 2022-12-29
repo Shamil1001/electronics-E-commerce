@@ -1,10 +1,18 @@
 <template>
-  <div class="products">
+  <div class="admin-products">
     <div class="catalog-title">
       <h3>Harytlar</h3>
-      <button class="add-product">Taze haryt gos</button>
+      <router-link to="/newProduct">
+        <button
+          type="button"
+          @click="() => handleNewProduct('product')"
+          class="add-product"
+        >
+          Taze haryt gos
+        </button>
+      </router-link>
     </div>
-    <div class="card" style="width: 90%">
+    <div class="card">
       <div class="card-header">
         <h4>Harytlar(3)</h4>
         <div class="card-header-right">
@@ -131,8 +139,7 @@ export default {
     return {
       previewImage: null,
     };
-  },
-  methods: {
+
     // uploadImage(e) {
     //   const image = e.target.files[0];
     //   const reader = new FileReader();
@@ -143,11 +150,17 @@ export default {
     //   };
     // },
   },
+  methods: {
+    handleNewProduct(product) {
+      this.$emit("addNewProduct", product);
+      console.log(product);
+    },
+  },
 };
 </script>
 
 <style>
-.products {
+.admin-products {
   margin: 40px;
 }
 .inputImage {
@@ -160,7 +173,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 90%;
   margin-bottom: 20px;
 }
 
@@ -174,8 +186,8 @@ export default {
   gap: 10px;
 }
 .add-product {
-  background: #661aff;
   border-radius: 10px;
+  background: #661aff;
   color: white;
   border: none;
   padding: 10px;

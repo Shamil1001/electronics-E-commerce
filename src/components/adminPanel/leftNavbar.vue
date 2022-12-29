@@ -41,7 +41,6 @@ export default {
   methods: {
     chooseMenu(m) {
       this.$emit("chooseLeftMenu", m);
-      // console.log("shamil");
     },
   },
 };

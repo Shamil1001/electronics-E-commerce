@@ -2,7 +2,14 @@
   <div class="customer">
     <div class="custom-title">
       <h3>Alyjylar</h3>
-      <button class="add-customer">New customer</button>
+      <router-link to="/newCustomer">
+        <button
+          class="add-customer"
+          @click="() => handleNewCustomer('newCustom')"
+        >
+          New customer
+        </button>
+      </router-link>
     </div>
     <div class="card" style="width: 90%">
       <div class="card-header">
@@ -108,6 +115,12 @@
 <script>
 export default {
   name: "Customers",
+  methods: {
+    handleNewCustomer(customer) {
+      this.$emit("addNewCustom", customer);
+      // console.log(customer);
+    },
+  },
 };
 </script>
 

@@ -5,14 +5,23 @@
         <input class="admin-searchbox" type="text" placeholder="Search..." />
       </div>
     </div>
-    <div v-if="leftMenu == 'orders'" class="mainPart">
+    <div v-if="leftMenu == 'orders' && customer == ''" class="mainPart">
       <Order />
     </div>
-    <div v-if="leftMenu == 'customers'" class="mainPart">
-      <Customer />
+    <div v-if="leftMenu == 'customers' && customer == ''" class="mainPart">
+      <Customer @addNewCustom="(customer) => handleCustom(customer)" />
     </div>
-    <div v-if="leftMenu == 'catalog'" class="mainPart">
-      <Catalog />
+    <div v-if="leftMenu == 'catalog' && product == ''" class="mainPart">
+      <Catalog @addNewProduct="(product) => handleProducts(product)" />
+    </div>
+    <div v-if="customer" class="mainPart">
+      <router-view name="a" />
+      <!-- <NewCustomer /> -->
+    </div>
+    <div v-if="product" class="mainPart">
+      <!-- <router-view name="a" /> -->
+      <!-- <NewCustomer /> -->
+      <router-view name="b" />
     </div>
   </div>
 </template>
@@ -21,14 +30,32 @@
 import Order from "./order.vue";
 import Customer from "./customers.vue";
 import Catalog from "./catalog.vue";
+// import NewCustomer from "@/components/adminPanel/newCustomer.vue";
 export default {
   name: "TopNavbar",
   components: {
     Order,
     Customer,
     Catalog,
+    // NewCustomer,
   },
   props: ["leftMenu"],
+  data() {
+    return {
+      customer: "",
+      product: "",
+    };
+  },
+  methods: {
+    handleCustom(item) {
+      console.log(item);
+      this.customer = item;
+    },
+    handleProducts(item) {
+      console.log(item);
+      this.product = item;
+    },
+  },
 };
 </script>
 
